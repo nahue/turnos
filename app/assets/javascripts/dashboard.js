@@ -1,0 +1,17 @@
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap
+//= require kendo/kendo.web.min
+//= require hoverzoom/hover.zoom
+//= require hoverzoom/hover.zoom.conf.js
+//= require library/raphael-min
+//= require dashboard/plugins/morris/morris.min
+//= require dashboard/plugins/sparkline/jquery.sparkline.min
+//= require dashboard/plugins/jvectormap/jquery-jvectormap-1.2.2.min
+//= require dashboard/plugins/jvectormap/jquery-jvectormap-world-mill-en
+//= require dashboard/plugins/fullcalendar/fullcalendar.min
+//= require dashboard/plugins/jqueryKnob/jquery.knob
+//= require dashboard/plugins/daterangepicker/daterangepicker
+//= require dashboard/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min
+//= require dashboard/plugins/iCheck/icheck.min
+//= require dashboard/AdminLTE/app
