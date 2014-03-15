@@ -79,10 +79,11 @@ Turnos::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Mailer
-  config.action_mailer.default_url_options = { host: 'safe-depths-9879.herokuapp.com' }
+
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => ENV["DOMAIN"] }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     address: ENV["SMTP_SERVER"],
     openssl_verify_mode: OpenSSL::SSL::VERIFY_NONE,
