@@ -91,7 +91,7 @@ Turnos::Application.configure do
     domain: ENV["MAILER_DOMAIN"],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["SMTP_USER"],
-    password: ENV["SMTP_PWD"]
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"]
   }
 end
