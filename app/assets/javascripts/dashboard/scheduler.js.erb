@@ -1,3 +1,6 @@
+<%
+    url = Turnos::Application.routes.url_helpers
+    events_path = url.api_v1_events_path %>
 $(function() {
     $("#scheduler").kendoScheduler({
         date: new Date("2014/3/1"),
@@ -15,21 +18,21 @@ $(function() {
             batch: true,
             transport: {
                 read: {
-                    url: "http://localhost:3000/api/v1/events.json",
+                    url: "<%= events_path %>.json",
                     dataType: "jsonp"
                 },
                 update: {
-                    url: "http://localhost:3000/api/v1/events/update",
+                    url: "<%= events_path %>/update",
                     dataType: "jsonp",
                     type: 'PUT'
                 },
                 create: {
-                    url: "http://localhost:3000/api/v1/events",
+                    url: "<%= events_path %>",
                     dataType: "jsonp",
                     type: 'POST'
                 },
                 destroy: {
-                    url: "http://localhost:3000/api/v1/events/destroy",
+                    url: "<%= events_path %>/destroy",
                     dataType: "jsonp",
                     type: 'DELETE'
                 }
