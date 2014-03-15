@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Use friendly_id on Users
   extend FriendlyId
   friendly_id :friendify, use: :slugged
-
+  attr_accessible :username, :email, :password, :password_confirmation, :admin, :locked
   # necessary to override friendly_id reserved words
   def friendify
     if username.downcase == "admin"
