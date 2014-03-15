@@ -14,17 +14,18 @@ module Turnos
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+    #config.time_zone = 'Buenos Aires'
+    #config.active_record.default_timezone = 'Buenos Aires'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
-    
+    config.i18n.default_locale = :es
+
     # turn off warnings triggered by friendly_id
     I18n.enforce_available_locales = false
-    
+
     # Test framework
     config.generators.test_framework :rspec
-    
+
   end
 end

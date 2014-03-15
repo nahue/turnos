@@ -1,0 +1,13 @@
+<% content_for :footer do %>
+    <%= javascript_include_tag "dashboard/scheduler.js", "data-turbolinks-track" => true %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-body">
+        <div id="scheduler"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103142223) do
+ActiveRecord::Schema.define(version: 20140314143111) do
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "startTimezone"
+    t.string   "endTimezone"
+    t.string   "description"
+    t.integer  "recurrenceId"
+    t.string   "recurrenceRule"
+    t.string   "recurrenceException"
+    t.boolean  "isAllDay"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false

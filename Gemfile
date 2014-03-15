@@ -8,7 +8,10 @@ gem 'jquery-rails', '~> 3.0.4'
 gem 'turbolinks', '~> 2.1.0'
 gem 'jbuilder', '~> 1.5.3'
 gem 'bcrypt-ruby', '~> 3.1.2'
-
+gem 'kendoui-rails'
+gem 'jquery-ui-rails'
+gem 'rabl'
+gem 'protected_attributes'
 group :doc do
   gem 'sdoc', require: false
 end
@@ -17,6 +20,7 @@ end
 group :development, :test do
   gem 'sqlite3', '~> 1.3.8'    # dev & test database
   gem 'figaro', '~> 0.7.0'     # env variables
+  gem 'pry-rails'
 end
 
 # Paging
@@ -42,6 +46,8 @@ gem 'devise', '~> 3.2.2'
 # Bootstrap 3
 group :development, :test do
   gem 'rails_layout', '~> 0.5.11'  # Bootstrap 3 layout generator
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 gem 'bootstrap-sass', '~> 3.0.3.0'
