@@ -1,7 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require kendo/kendo.web.min
+//= require kendo.web.min
+//= require kendo.culture.es.min
 //= require hoverzoom/hover.zoom
 //= require hoverzoom/hover.zoom.conf.js
 //= require library/raphael-min

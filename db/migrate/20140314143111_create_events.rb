@@ -11,7 +11,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :recurrenceRule
       t.string :recurrenceException
       t.boolean :isAllDay
-
+      t.references :resource, index: true
       t.timestamps
     end
   end

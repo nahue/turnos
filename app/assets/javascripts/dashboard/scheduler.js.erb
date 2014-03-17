@@ -2,6 +2,7 @@
     url = Turnos::Application.routes.url_helpers
     events_path = url.api_v1_events_path %>
 $(function() {
+    kendo.culture('es');
     $("#scheduler").kendoScheduler({
         date: new Date("2014/3/1"),
         startTime: new Date("2014/3/1 07:00 AM"),
@@ -42,7 +43,7 @@ $(function() {
                     id: "id",
                     fields: {
                         id: { from: "id", type: "number" },
-                        title: { from: "title", defaultValue: "No title", validation: { required: true } },
+                        title: { from: "title", defaultValue: "", validation: { required: true } },
                         start: { type: "date", from: "start" },
                         end: { type: "date", from: "end" },
                         startTimezone: { from: "startTimezone" },
@@ -55,6 +56,54 @@ $(function() {
                     }
                 }
             }
+        },
+        editable: {
+            confirmation: "Esta seguro de eliminar este turno?"
+          },
+        messages: {
+            views: {
+                day: "Dia",
+                week: "Semana",
+                month: "Mes"
+            },
+            editor: {
+               editorTitle: "Editar turno",
+               title: "Titulo",
+               start: "Inicio",
+               end: "Fin",
+               allDayEvent: "Todo el dia",
+               repeat: "Repetir",
+               description: "Descripcion"
+            },
+            recurrenceEditor: {
+                frequencies: {
+                    daily: "Diariamente",
+                    monthly: "Mensualmente",
+                    never: "Nunca",
+                    weekly: "Semanalmente",
+                    yearly: "Anualmente"
+                },
+                daily: {
+                    repeatEvery: "Repetir cada: ",
+                    interval: " dia(s)"
+                },
+                weekly: {
+                    repeatEvery: "Repetir cada: ",
+                    interval: " dia(s)"
+                },
+                end: {
+                    never: " Nunca",
+                    after: " Después de ",
+                    occurrence: " ocurrencias(s).",
+                    on: " En"
+                }
+            },
+            event: "Turno",
+            today: "Hoy",
+            save: "Guardar",
+            cancel: "Cancelar",
+            destroy: "Eliminar",
+            deleteWindowTitle: "Eliminar turno"
         }
     });
 

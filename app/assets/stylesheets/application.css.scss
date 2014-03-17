@@ -4,7 +4,7 @@
  *= require_self
  *= require bootstrap
  *= require font-awesome
- *= require kendo/kendo.common.min
- *= require kendo/kendo.bootstrap.min
+ *= kendo.common.min
+ *= kendo.bootstrap.min
  *= require_directory .
  */

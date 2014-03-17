@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314143111) do
+ActiveRecord::Schema.define(version: 20140316172459) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -24,8 +24,16 @@ ActiveRecord::Schema.define(version: 20140314143111) do
     t.string   "recurrenceRule"
     t.string   "recurrenceException"
     t.boolean  "isAllDay"
+    t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  add_index "events", ["resource_id"], name: "index_events_on_resource_id"
+
+  create_table "events_resources", force: true do |t|
+    t.integer "event_id"
+    t.integer "resource_id"
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -40,6 +48,25 @@ ActiveRecord::Schema.define(version: 20140314143111) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "resource_types", force: true do |t|
+    t.string   "title"
+    t.boolean  "multiple"
+    t.string   "field"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources", force: true do |t|
+    t.string   "text"
+    t.string   "value"
+    t.string   "color"
+    t.integer  "resource_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "resources", ["resource_type_id"], name: "index_resources_on_resource_type_id"
 
   create_table "users", force: true do |t|
     t.string   "username",               default: "",    null: false
