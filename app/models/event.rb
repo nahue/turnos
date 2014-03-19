@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
     types = ResourceType.all.map {|m| m.multiple? ? m.title : m.field}
     types.each do |type|
 
-      resources = self.resources.includes(:resource_type).where("resource_types.title == ? OR resource_types.field == ? ", type, type)
+      resources = self.resources.includes(:resource_type).where("resource_types.title = ? OR resource_types.field = ? ", type, type).references(:resource_type)
       resource_ids = resources.map {|r| r.id}
       ids = (event_params[type].is_a? Array) ? event_params[type].map {|a| a.to_i} : event_params[type].to_i
 
