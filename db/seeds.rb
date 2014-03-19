@@ -52,6 +52,12 @@ r2 = Resource.create(
   color: "yellow",
   resource_type_id: rt1.id
 )
+r3 = Resource.create(
+  text: "Kinesiologia",
+  value: nil,
+  color: "yellow",
+  resource_type_id: rt2.id
+)
 
 
 
@@ -62,7 +68,7 @@ e1 = Event.new(
   description: "Prueba de evento #1",
   isAllDay: true,
 )
-e1.resources << r1
+#e1.resources << r1
 e1.save
 
 e2 = Event.new(
@@ -72,5 +78,5 @@ e2 = Event.new(
   description: "Prueba de evento #2",
   isAllDay: true
 )
-e2.resources << [r1, r2]
+#e2.resources << [r1, r2]
 e2.save

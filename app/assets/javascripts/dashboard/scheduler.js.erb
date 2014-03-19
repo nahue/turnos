@@ -4,8 +4,8 @@
 $(function() {
     kendo.culture('es');
     $("#scheduler").kendoScheduler({
-        date: new Date("2014/3/1"),
-        startTime: new Date("2014/3/1 07:00 AM"),
+        //date: new Date("2014/3/1"),
+        //startTime: new Date("2014/3/1 07:00 AM"),
         height: 600,
         views: [
             "day",
@@ -52,11 +52,32 @@ $(function() {
                         recurrenceId: { from: "recurrenceId" },
                         recurrenceRule: { from: "recurrenceRule" },
                         recurrenceException: { from: "recurrenceException" },
-                        isAllDay: { type: "boolean", from: "isAllDay" }
+                        isAllDay: { type: "boolean", from: "isAllDay" },
+                        Profesionales: { from: "Profesionales", nullable: true },
+                        especialidad_id: { from: "especialidad_id", nullable: true, defaultValue: 0 }
                     }
                 }
             }
         },
+        resources: [
+            {
+                field: 'Profesionales',
+                dataSource: [
+                    { text: 'Dr. Pepe Carioca', value: 1, color: "#f8a398" },
+                    { text: 'Kinesiologo Venique tetoco', value: 2, color: "#a2a2a2" }
+                ],
+                title: 'Profesionales',
+                multiple: true
+            },
+            {
+                field: 'especialidad_id',
+                dataSource: [
+                    { text: 'Kinesiologia', value: 3, color: "#fff000" },
+                    { text: 'Traumatologia', value: 4, color: "#fff000" },
+                ],
+                title: 'Especialidad'
+            }
+        ],
         editable: {
             confirmation: "Esta seguro de eliminar este turno?"
           },
