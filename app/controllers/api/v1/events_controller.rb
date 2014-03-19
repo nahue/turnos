@@ -11,45 +11,32 @@ module Api
       end
 
       def update
-        if params[:models]["0"][:id].present?
-          @event = Event.find(params[:models]["0"][:id])
-          @event.update(params[:models]["0"])
-          # get ResourceTypes array
-          types = ResourceType.all.map {|m| m.multiple? ? m.title : m.field}
-          types.each do |type|
-            resources = @event.resources.includes(:resource_type).where("resource_types.title == ? OR resource_types.field == ? ", type, type)
-            resource_ids = resources.map {|r| r.id}
-            ids = (params[:models]["0"][type].is_a? Array) ? params[:models]["0"][type].map {|a| a.to_i} : params[:models]["0"][type].to_i
+        event_params = params[:models]["0"]
 
-            binding.pry
-            # checks if related resources matches resources given by POST request
-            if !resource_ids.empty? && (resource_ids != ids)
-              @event.resources.destroy resources
-            end
-
-
-
-            unless resource_ids == ids
-              unless ids == 0
-                if ids.is_a? Integer
-                  @event.resources << Resource.find(ids)
-                else
-                  ids.each do |id|
-                    @event.resources << Resource.find(id)
-                  end
-                end
-              end
-            end
-
+        if event_params[:id].present?
+          @event = Event.find(event_params[:id])
+          @event.title = event_params[:title]
+          @event.start = event_params[:start]
+          @event.end = event_params[:end]
+          @event.startTimezone = event_params[:startTimezone]
+          @event.endTimezone = event_params[:endTimezone]
+          @event.description = event_params[:description]
+          @event.recurrenceId = event_params[:recurrenceId]
+          @event.recurrenceRule = event_params[:recurrenceRule]
+          @event.recurrenceException = event_params[:recurrenceException]
+          @event.isAllDay = event_params[:isAllDay]
+          if @event.save
+            @event.assign_resources(event_params)
           end
-
           Rabl.render(@event, 'events/show', :view_path => 'app/views/api/v1', :format => :json)
         end
       end
 
       def create
-        @event = Event.new(params[:models]["0"])
+        event_params = params[:models]["0"]
+        @event = Event.new(event_params)
         if @event.save
+          @event.assign_resources(event_params)
           Rabl.render(@event, 'events/show', :view_path => 'app/views/api/v1', :format => :json)
         end
       end
@@ -59,6 +46,7 @@ module Api
         @event.destroy
         Rabl.render(@event, 'events/show', :view_path => 'app/views/api/v1', :format => :json)
       end
+
     end
   end
 end
