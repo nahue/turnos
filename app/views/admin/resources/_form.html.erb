@@ -1,0 +1,17 @@
+
+<%= form_for [:admin,@resource] do |f| %>
+  <div class="box-body">
+    <div class="form-group">
+      <label for="resource[text]">Nombre</label>
+      <%= f.text_field :text, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="resource[color]">Color</label>
+      <%= f.text_field :color, :class => "form-control colorpicker-element my-colorpicker1" %>
+    </div>
+  </div>
+
+  <div class="box-footer">
+    <%= f.submit "Enviar", :class => "btn btn-primary" %>
+  </div>
+<% end %>
