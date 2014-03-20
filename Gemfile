@@ -8,7 +8,6 @@ gem 'jquery-rails', '~> 3.0.4'
 gem 'turbolinks', '~> 2.1.0'
 gem 'jbuilder', '~> 1.5.3'
 gem 'bcrypt-ruby', '~> 3.1.2'
-#ñgem 'kendoui-rails'
 gem 'jquery-ui-rails'
 gem 'rabl'
 gem 'protected_attributes'
@@ -51,8 +50,9 @@ group :development, :test do
 end
 
 gem 'bootstrap-sass', '~> 3.0.3.0'
-
-
+gem "breadcrumbs_on_rails"
+gem 'bootstrap-colorpicker-rails'
+gem 'simple_form'
 # RSpec
 group :test, :development do
   gem "rspec-rails", '~> 2.14.1'

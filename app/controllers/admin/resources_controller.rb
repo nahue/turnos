@@ -1,7 +1,11 @@
 class Admin::ResourcesController < Admin::BaseController
   before_action :find_resource, except: [:index, :new, :create]
 
+  add_breadcrumb "Dashboard", :admin_root_path
+  add_breadcrumb "Eventos", :admin_events_path
+
   def index
+    add_breadcrumb "Recursos", nil
     @resources = Resource.all.page params[:page]
   end
 
@@ -13,35 +17,36 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def edit
+    add_breadcrumb "Editar Recurso", nil
   end
 
   def create
     @resource = Resource.new(params[:resource])
     if @resource.save
-      flash[:success] = "El recurso fue creado correctamente"
-      redirect_to @resource
+      flash[:notice] = "El recurso fue creado correctamente"
+      redirect_to admin_resources_path
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Ups! Ocurrio un error"
       render 'new'
     end
   end
 
   def update
     if @resource.update_attributes(params[:resource])
-      flash[:success] = "El recurso fue actualizado correctamente"
-      redirect_to @resource
+      flash[:notice] = "El recurso fue actualizado correctamente"
+      redirect_to admin_resources_path
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Ups! Ocurrio un error"
       render 'edit'
     end
   end
 
   def destroy
     if @resource.destroy
-      flash[:success] = "El recurso fue eliminado correctamente"
+      flash[:notice] = "El recurso fue eliminado correctamente"
       redirect_to admin_resources_path
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Ups! Ocurrio un error"
       redirect_to admin_resources_path
     end
   end

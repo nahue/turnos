@@ -3,5 +3,8 @@ class Resource < ActiveRecord::Base
   belongs_to :resource_type
   has_and_belongs_to_many :events
 
+  validates :text, presence: true
+  validates :color, presence: true
+
   paginates_per 10
 end

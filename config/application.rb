@@ -27,5 +27,7 @@ module Turnos
     # Test framework
     config.generators.test_framework :rspec
 
+    config.autoload_paths += %W(#{config.root}/lib)
+
   end
 end
