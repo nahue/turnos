@@ -6,6 +6,7 @@
 //= require hoverzoom/hover.zoom
 //= require hoverzoom/hover.zoom.conf.js
 //= require library/raphael-min
+//= require bootstrap-modal
 //= require dashboard/plugins/morris/morris.min
 //= require dashboard/plugins/sparkline/jquery.sparkline.min
 //= require dashboard/plugins/jvectormap/jquery-jvectormap-1.2.2.min

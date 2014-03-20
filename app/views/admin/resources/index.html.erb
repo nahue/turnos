@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Administre los Recursos del Calendario</h3>
+        <div class="pull-right box-tools">
+
+        </div>
+      </div>
+      <div class="box-body table-responsive no-padding">
+        <div class="text-center">
+          <%= paginate @resources %>
+        </div>
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Color</th>
+              <th></th>
+            </tr>
+            <% @resources.each do |r| %>
+            <tr>
+              <td><%= r.id %></td>
+              <td><%= r.text %></td>
+              <td><span class="label" style="background-color:<%= r.color %>;">&nbsp;</span> <%= r.color %> </td>
+              <td>
+                <div class="btn-group">
+                    <a href="<%= edit_admin_resource_path(r)%>" type="button" class="btn btn-default">Editar</a>
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="<%= admin_resource_path(r) %>" data-method="delete" data-confirm="Esta seguro?">Eliminar</a></li>
+                    </ul>
+                </div>
+              </td>
+            </tr>
+
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

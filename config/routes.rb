@@ -10,6 +10,7 @@ Turnos::Application.routes.draw do
     root "base#index"
     resources :users
     resources :events
+    resources :resources
   end
 
   namespace :api do

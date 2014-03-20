@@ -1,15 +1,10 @@
-<%
-    url = Turnos::Application.routes.url_helpers
-    events_path = url.api_v1_events_path %>
+
 $(function() {
     kendo.culture('es');
     $("#scheduler").kendoScheduler({
-        //date: new Date("2014/3/1"),
-        //startTime: new Date("2014/3/1 07:00 AM"),
         height: 600,
         views: [
             "day",
-            //{ type: "workWeek", selected: true },
             "week",
             { type: "month", selected: true },
             "agenda"
@@ -19,21 +14,21 @@ $(function() {
             batch: true,
             transport: {
                 read: {
-                    url: "<%= events_path %>.json",
+                    url: "<%= api_v1_events_path %>.json",
                     dataType: "jsonp"
                 },
                 update: {
-                    url: "<%= events_path %>/update",
+                    url: "<%= api_v1_events_path %>/update",
                     dataType: "jsonp",
                     type: 'PUT'
                 },
                 create: {
-                    url: "<%= events_path %>",
+                    url: "<%= api_v1_events_path %>",
                     dataType: "jsonp",
                     type: 'POST'
                 },
                 destroy: {
-                    url: "<%= events_path %>/destroy",
+                    url: "<%= api_v1_events_path %>/destroy",
                     dataType: "jsonp",
                     type: 'DELETE'
                 }
@@ -53,30 +48,12 @@ $(function() {
                         recurrenceRule: { from: "recurrenceRule" },
                         recurrenceException: { from: "recurrenceException" },
                         isAllDay: { type: "boolean", from: "isAllDay" },
-                        Profesionales: { from: "Profesionales", nullable: true },
-                        especialidad_id: { from: "especialidad_id", nullable: true, defaultValue: 0 }
+                        <%= resource_type_fields.html_safe %>
                     }
                 }
             }
         },
-        resources: [
-            {
-                field: 'Profesionales',
-                dataSource: [
-                    { text: 'Dr. Pepe Carioca', value: 1, color: "#f8a398" },
-                    { text: 'Kinesiologo Venique tetoco', value: 2, color: "#a2a2a2" }
-                ],
-                title: 'Profesionales',
-                multiple: true
-            },
-            {
-                field: 'especialidad_id',
-                dataSource: [
-                    { text: 'Kinesiologia', value: 3, color: "#fff000" }
-                ],
-                title: 'Especialidad'
-            }
-        ],
+        resources: <%= print_resources.html_safe %>,
         editable: {
             confirmation: "Esta seguro de eliminar este turno?"
           },
@@ -126,7 +103,7 @@ $(function() {
             deleteWindowTitle: "Eliminar turno"
         }
     });
-
+/*
     $("#people :checkbox").change(function(e) {
         var checked = $.map($("#people :checked"), function(checkbox) {
             return parseInt($(checkbox).val());
@@ -140,4 +117,5 @@ $(function() {
             }
         });
     });
+*/
 });

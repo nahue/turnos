@@ -43,7 +43,7 @@ rt2 = ResourceType.create(
 r1 = Resource.create(
   text: "Dr. Pepe Carioca",
   value: nil,
-  color: "yellow",
+  color: "green",
   resource_type_id: rt1.id
 )
 r2 = Resource.create(
@@ -55,10 +55,24 @@ r2 = Resource.create(
 r3 = Resource.create(
   text: "Kinesiologia",
   value: nil,
-  color: "yellow",
+  color: "red",
   resource_type_id: rt2.id
 )
 
+# Test user accounts
+(1..20).each do |i|
+  r = Resource.new(
+      text: "Recurso #{i}",
+      value: nil,
+      color: "red",
+      resource_type_id: rt2.id
+  )
+
+  r.save!
+
+  puts "#{i} recursos de prueba creados..." if (i % 5 == 0)
+
+end
 
 
 e1 = Event.new(

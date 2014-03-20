@@ -2,15 +2,29 @@ es:
   messages:
     login: "Entrar"
   title:
-    default: "Sistema de prueba"
+    default:
+      title: "Sistema de prueba"
+      subtitle: "por Nahuel Chaves"
     admin/base:
-      index: "Dashboard"
+      index:
+        title: "Dashboard"
     tasks:
-      index: "Tareas"
+      index:
+        title: "Tareas"
     users:
-      show: "Usuario"
+      show:
+        title: "Usuario"
     assignments:
-      index: "Turnos"
+      index:
+        title: "Turnos"
+    admin/events:
+      index:
+        title: "Calendario"
+        subtitle: "de Eventos"
+    admin/resources:
+      index:
+        title: "Recursos"
+        subtitle: "para el calendario"
   activerecord:
     models:
       task: "Tarea"
