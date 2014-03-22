@@ -3,6 +3,7 @@
   <div class="box-body">
     <%= f.input :text %>
     <%= f.input :color, :input_html => {:class => "colorpicker-element my-colorpicker1"} %>
+    <%= f.association :resource_type, include_blank: "Seleccione un Tipo" %>
   </div>
 
   <div class="box-footer">

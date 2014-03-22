@@ -1,4 +1,6 @@
 es:
+  "true": "Si"
+  "false": "No"
   messages:
     login: "Entrar"
   title:
@@ -239,6 +241,8 @@ es:
   activerecord:
     models:
       user: "Usuario"
+      resource: "Recurso"
+      resouce_type: "Tipo de Recurso"
     errors:
       <<: *errors
 

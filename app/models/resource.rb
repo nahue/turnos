@@ -5,6 +5,6 @@ class Resource < ActiveRecord::Base
 
   validates :text, presence: true
   validates :color, presence: true
-
+  validates :resource_type, presence: true
   paginates_per 10
 end

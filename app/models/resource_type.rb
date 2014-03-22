@@ -1,6 +1,15 @@
 class ResourceType < ActiveRecord::Base
   attr_accessible :title, :multiple, :field
   has_many :resources, :dependent => :delete_all
+
+  validates :title, presence: true
+  validates :title, format: { with: /\A[a-zA-Z0-9_]+\Z/ }
+  validates :title, uniqueness: true
+  validates :field, presence: true
+  validates :field, format: { with: /\A[a-zA-Z0-9_]+\Z/ }
+  validates :field, uniqueness: true
+  paginates_per 10
+
   # get name for json response
   def getName
     a = 0

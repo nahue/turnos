@@ -11,6 +11,7 @@ Turnos::Application.routes.draw do
     resources :users
     resources :events
     resources :resources
+    resources :resource_types
   end
 
   namespace :api do

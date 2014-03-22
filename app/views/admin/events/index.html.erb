@@ -10,7 +10,17 @@
       <div class="box-header">
         <h3 class="box-title">Administre sus tareas</h3>
         <div class="pull-right box-tools">
-          <a href="<%= admin_resources_path %>" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="" data-original-title="Editar Recursos" style="color: white"><i class="fa fa-calendar"></i></a>
+          <div class="btn-group">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              Configurar <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li><a href="<%= admin_resources_path %>">Recursos</a></li>
+              <li><a href="<%= admin_resource_types_path %>">Tipos de Recursos</a></li>
+            </ul>
+          </div>
+
+          <!--<a href="<%= admin_resources_path %>" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="" data-original-title="Editar Recursos" style="color: white"><i class="fa fa-calendar"></i></a>-->
         </div>
       </div>
       <div class="box-body">

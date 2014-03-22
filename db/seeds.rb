@@ -59,7 +59,7 @@ r3 = Resource.create(
   resource_type_id: rt2.id
 )
 
-# Test user accounts
+# Test resources
 (1..20).each do |i|
   r = Resource.new(
       text: "Recurso #{i}",
@@ -74,6 +74,19 @@ r3 = Resource.create(
 
 end
 
+# Test resource types
+(1..20).each do |i|
+  r = ResourceType.new(
+    title: "ResourceType_#{i}",
+    multiple: i.even?,
+    field: "field_id_#{i}"
+  )
+
+  r.save!
+
+  puts "#{i} tipos de recursos de prueba creados..." if (i % 5 == 0)
+
+end
 
 e1 = Event.new(
   title: "Evento #1",

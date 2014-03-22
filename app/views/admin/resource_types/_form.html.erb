@@ -1,0 +1,12 @@
+<%= simple_form_for [:admin,@resource_type] do |f| %>
+  <div class="box-body">
+    <%= f.input :title %>
+    <%= f.input :multiple %>
+    <%= f.input :field %>
+
+  </div>
+
+  <div class="box-footer">
+    <%= f.submit "Enviar", :class => "btn btn-primary" %>
+  </div>
+<% end %>

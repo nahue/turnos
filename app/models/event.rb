@@ -2,6 +2,9 @@ class Event < ActiveRecord::Base
   attr_accessible :title, :start, :end, :startTimezone, :endTimezone, :description, :recurrenceId, :recurrenceRule, :recurrenceException, :isAllDay
   has_and_belongs_to_many :resources
 
+  scope :next_event, -> (number_of_events) {
+    where("start > ?", DateTime.now).order("start ASC").limit(number_of_events)
+  }
   def assign_resources(event_params)
     types = ResourceType.all.map {|m| m.multiple? ? m.title : m.field}
     types.each do |type|
