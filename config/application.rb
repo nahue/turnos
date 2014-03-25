@@ -29,5 +29,12 @@ module Turnos
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    config.to_prepare do
+      Devise::SessionsController.layout       "layouts/login"
+      Devise::RegistrationsController.layout  "layouts/login"
+      Devise::ConfirmationsController.layout  "layouts/login"
+      Devise::UnlocksController.layout        "layouts/login"
+      Devise::PasswordsController.layout      "layouts/login"
+    end
   end
 end

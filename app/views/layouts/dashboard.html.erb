@@ -1,38 +1,85 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
   <title><%= @title || "Turnos" %></title>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag "dashboard", media: "all", "data-turbolinks-track" => true %>
+
   <%= csrf_meta_tags %>
+  <!-- Modernizr (browser feature detection library) & Respond.js (Enable responsive CSS code on browsers that don't support it, eg IE8) -->
+  <script src="js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+  <%= yield(:head) %>
 </head>
-<body class="skin-blue">
-  <%= render("layouts/dashboard/header") %>
+<body>
+  <!-- Page Container -->
+  <div id="page-container" class="sidebar-partial sidebar-visible-lg sidebar-no-animations">
+     <!-- Main Sidebar -->
+    <div id="sidebar">
+      <!-- Wrapper for scrolling functionality -->
+      <div class="sidebar-scroll">
+          <!-- Sidebar Content -->
+          <div class="sidebar-content">
+            <!-- Brand -->
+            <a href="<%= root_path %>" class="sidebar-brand">
+                <i class="gi gi-flash"></i><strong>Pro</strong>UI
+            </a>
+            <!-- END Brand -->
 
-  <div class="wrapper row-offcanvas row-offcanvas-left">
+            <%= render 'layouts/navigation' %>
+          </div>
+      </div>
+    </div>
+    <div id="main-container">
+      <header class="navbar navbar-default">
+        <!-- Left Header Navigation -->
+        <ul class="nav navbar-nav-custom">
+            <!-- Main Sidebar Toggle Button -->
+            <li>
+                <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');">
+                    <i class="fa fa-bars fa-fw"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- Right Header Navigation -->
+        <ul class="nav navbar-nav-custom pull-right">
+          <!-- User Dropdown -->
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="img/placeholders/avatars/avatar2.jpg" alt="avatar"> <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+              <li class="dropdown-header text-center">Cuenta de Usuario</li>
+              <li>
 
-    <%= render(:partial=>"layouts/dashboard/leftside", :locals=>{:active=>controller_name}) %>
-    <aside class="right-side">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-          <h1>
-              <%= page_title %>
-              <small><%= section_title %></small>
-          </h1>
-          <%= render_breadcrumbs :builder => ::BootstrapBreadcrumbsBuilder %>
-          <!--
-          <ol class="breadcrumb">
-              <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
-          </ol>-->
-      </section>
-      <section class="content">
-        <%= render "layouts/messages" %>
+                  <a href="<%= edit_user_registration_path%>">
+                      <i class="fa fa-user fa-fw pull-right"></i>
+                      Perfil
+                  </a>
+                  <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
+<!--                  <a href="#modal-user-settings" data-toggle="modal">
+                      <i class="fa fa-cog fa-fw pull-right"></i>
+                      Settings
+                  </a>-->
+              </li>
+              <li class="divider"></li>
+              <li>
+                  <!--<a href="page_ready_lock_screen.html"><i class="fa fa-lock fa-fw pull-right"></i> Lock Account</a>-->
+                  <a href="<%= destroy_user_session_path %>" data-method="delete"><i class="fa fa-ban fa-fw pull-right"></i> Salir</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </header>
+      <!-- Page content -->
+      <div id="page-content">
         <%= yield %>
-      </section>
-    </aside>
+      </div>
+    </div>
   </div>
-  <%= javascript_include_tag "dashboard", "data-turbolinks-track" => true %>
-  <%= yield :footer %>
+  <!-- END Page Container -->
+<%= javascript_include_tag "dashboard", "data-turbolinks-track" => true %>
+<%= yield :footer %>
 </body>
 </html>

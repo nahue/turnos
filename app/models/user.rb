@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Use friendly_id on Users
   extend FriendlyId
   friendly_id :friendify, use: :slugged
-  attr_accessible :username, :email, :password, :password_confirmation, :admin, :locked
+  attr_accessible :username, :email, :password, :password_confirmation, :admin, :locked, :remember_me
   # necessary to override friendly_id reserved words
   def friendify
     if username.downcase == "admin"
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   # Validations
   # :username
+  validates :username, presence: true
   validates :username, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /\A[a-zA-Z0-9]*\z/, on: :create, message: "can only contain letters and digits"
   validates :username, length: { in: 4..10 }

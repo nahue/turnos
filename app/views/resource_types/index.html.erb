@@ -4,7 +4,7 @@
       <div class="box-header">
         <h3 class="box-title">Administre los Tipos de Recursos</h3>
         <div class="pull-right box-tools">
-          <a href="<%= new_admin_resource_path %>" class="btn btn-default">Nuevo Tipo de Recurso</a>
+          <a href="<%= new_resource_path %>" class="btn btn-default">Nuevo Tipo de Recurso</a>
         </div>
       </div>
       <div class="box-body table-responsive no-padding">
@@ -28,13 +28,13 @@
               <td><%= rt.field %></td>
               <td>
                 <div class="btn-group">
-                    <a href="<%= edit_admin_resource_type_path(rt)%>" type="button" class="btn btn-default">Editar</a>
+                    <a href="<%= edit_resource_type_path(rt)%>" type="button" class="btn btn-default">Editar</a>
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Ver Mas</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="<%= admin_resource_type_path(rt) %>" data-method="delete" data-confirm="Esta seguro?">Eliminar</a></li>
+                        <li><a href="<%= resource_type_path(rt) %>" data-method="delete" data-confirm="Esta seguro?">Eliminar</a></li>
                     </ul>
                 </div>
               </td>

@@ -42,6 +42,31 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: 'span', class: 'help-block has-error' }
   end
 
+  config.wrappers :bootstrap_login, tag: :div, class: 'form-group', error_class: 'has-error' do |b|
+
+
+    b.wrapper :col, :tag => :div, :class => "col-xs-12" do |col|
+      col.wrapper "input_group", :tag => :div, :class => "input-group" do |ig|
+        ig.use :html5
+        ig.use :maxlength
+        ig.use :placeholder
+
+        ig.optional :pattern
+        ig.optional :readonly
+
+        #<span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+        ig.wrapper tag: :span, class: 'input-group-addon' do |span|
+          span.wrapper 'icon', tag: 'i', class: 'gi' do |i|
+          end
+        end
+        ig.use :input
+
+      end
+      #col.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
+      #col.use :error, wrap_with: { tag: 'span', class: 'help-block has-error' }
+    end
+  end
+
   config.wrappers :prepend, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
@@ -83,6 +108,27 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: :span, class: "help-block text-danger" }
   end
 
+  config.wrappers :checkbox2, tag: false,  error_class: "has-error" do |b|
+
+    # Form extensions
+    b.use :html5
+
+    b.wrapper "switch", tag: :label, :class => "switch switch-primary" do |ba|
+      ba.use :input
+
+      ba.use :hint,  wrap_with: { tag: :p, class: "help-block" }
+      ba.use :error, wrap_with: { tag: :span, class: "help-block text-danger" }
+
+      ba.wrapper tag: :span do |span|
+      end
+    end
+  end
+  config.wrappers :inline_checkbox, :tag => :label, class: "switch switch-primary", :error_class => 'has-error' do |b|
+    b.use :html5
+    b.use :input
+    b.wrapper tag: :span do |span|
+    end
+  end
   # Wrappers for forms and inputs using the Twitter Bootstrap toolkit.
   # Check the Bootstrap docs (http://getbootstrap.com/)
   # to learn about the different styles for forms and inputs,

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+  <title><%= @title || "Turnos" %></title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag "login", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "login", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <!-- Modernizr (browser feature detection library) & Respond.js (Enable responsive CSS code on browsers that don't support it, eg IE8) -->
+  <script src="js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+  <%= yield(:head) %>
+</head>
+<body>
+    <!-- Login Background -->
+  <div id="login-background">
+      <!-- For best results use an image with a resolution of 2560x400 pixels (prefer a blurred image for smaller file size) -->
+      <img src="/assets/proui/login_header.jpg" alt="Login Background" class="animation-pulseSlow">
+
+  </div>
+  <!-- END Login Background -->
+
+  <!-- Login Container -->
+  <div id="login-container" class="animation-fadeIn" <%= raw "style='top: 103px;'" if controller_name == 'registrations' %>>
+    <%= devise_error_messages! %>
+    <!-- Login Title -->
+    <div class="login-title text-center">
+      <h1><i class="gi gi-flash"></i> <strong data-toggle="tooltip" title="Sistema de Gestion de Recursos">SGR</strong><br><small>Por favor ingrese sus datos o <strong>registrese</strong></small></h1>
+    </div>
+    <!-- END Login Title -->
+    <!-- Login Block -->
+    <div class="block remove-margin">
+      <%= yield %>
+    </div>
+  </div>
+
+</body>
+</html>

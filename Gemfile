@@ -5,7 +5,6 @@ gem 'sass-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.4.0'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.0.4'
-gem 'turbolinks', '~> 2.1.0'
 gem 'jbuilder', '~> 1.5.3'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'jquery-ui-rails'
@@ -49,10 +48,11 @@ group :development, :test do
   gem "binding_of_caller"
 end
 
-gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem "breadcrumbs_on_rails"
 gem 'bootstrap-colorpicker-rails'
 gem 'simple_form'
+gem 'simple_form-magic_submit'
 # RSpec
 group :test, :development do
   gem "rspec-rails", '~> 2.14.1'

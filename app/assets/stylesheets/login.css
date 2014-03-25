@@ -1,0 +1,20 @@
+/*
+ *= require_self
+ *= require bootstrap
+ *= require font-awesome
+ *= require proui/plugins
+ *= require proui/main
+ *= require proui/themes
+ */
+
+#login-errors {
+  margin-top: -97px;
+}
+
+/* Small devices, Tablets (>767px) */
+@media screen and (max-width: 768px) {
+  #login-errors {
+    margin-top: 0 !important;
+  }
+
+}

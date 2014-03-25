@@ -13,10 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require kendo.web.min
-//= require kendo.culture.es.min
 //= require proui/plugins
 //= require proui/app
-//= require proui/pages/index
+//= require proui/pages/login
 
-$(function(){ Index.init(); });
+$(function(){ Login.init(); });

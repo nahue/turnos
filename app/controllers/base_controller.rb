@@ -1,5 +1,6 @@
-class Admin::BaseController < ApplicationController
-  before_filter :require_admin!
+class BaseController < ApplicationController
+  #before_filter :require_admin!
+  before_filter :authenticate_user!
   layout 'layouts/dashboard'
   def index
     @last_signups = User.last_signups(10)
